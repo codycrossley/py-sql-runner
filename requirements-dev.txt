@@ -1,0 +1,23 @@
+-e .
+certifi==2025.6.15
+charset-normalizer==3.4.2
+clickhouse-connect==0.8.17
+idna==3.10
+Jinja2==3.1.6
+lz4==4.4.4
+MarkupSafe==3.0.2
+numpy==2.2.6
+pandas==2.3.0
+psycopg==3.2.9
+psycopg-binary==3.2.9
+pyarrow==20.0.0
+python-dateutil==2.9.0.post0
+pytz==2025.2
+requests==2.32.4
+six==1.17.0
+trino==0.335.0
+typing_extensions==4.14.0
+tzdata==2025.2
+tzlocal==5.3.1
+urllib3==2.5.0
+zstandard==0.23.0

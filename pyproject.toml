@@ -1,0 +1,28 @@
+[project]
+name = "py-sql-runner"
+version = "0.0.1"
+description = "Simple abstraction layer over Trino, ClickHouse, PostgreSQL, and more"
+authors = [{ name="Cody Crossley", email="cody@codycrossley.com" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["sql", "trino", "postgres", "clickhouse", "database"]
+requires-python = ">=3.10"
+dependencies = [
+    "clickhouse-connect==0.8.17",
+    "dotenv==0.9.9",
+    "jinja2==3.1.6",
+    "pandas==2.3.0",
+    "psycopg==3.2.9",
+    "psycopg-binary==3.2.9",
+    "pyarrow==20.0.0",
+    "redshift-connector==2.1.7",
+    "trino==0.335.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/codycrossley/py-sql-runner"
+"Bug Tracker" = "https://github.com/codycrossley/py-sql-runner/issues"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
