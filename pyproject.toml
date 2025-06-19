@@ -1,11 +1,11 @@
 [project]
 name = "py-sql-runner"
-version = "0.0.1"
+version = "0.0.2"
 description = "Simple abstraction layer over Trino, ClickHouse, PostgreSQL, and more"
 authors = [{ name="Cody Crossley", email="cody@codycrossley.com" }]
 readme = "README.md"
 license = { file = "LICENSE" }
-keywords = ["sql", "trino", "postgres", "clickhouse", "database"]
+keywords = ["sql", "trino", "postgres", "clickhouse", "redshift", "database"]
 requires-python = ">=3.10"
 dependencies = [
     "clickhouse-connect==0.8.17",

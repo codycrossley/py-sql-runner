@@ -27,7 +27,12 @@ class RedshiftRunner(SQLRunner):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.conn.close()
+        if self.conn:
+            self.conn.close()
+
+    def __del__(self):
+        if self.conn:
+            self.conn.close()
 
     def execute_query(self, query: str):
         cursor = self.conn.cursor()
