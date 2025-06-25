@@ -1,13 +1,9 @@
 import clickhouse_connect
 
-import pandas as pd
-import psycopg
-from typing import Any
-
 from sql_runner.core import ConnectionConfig, SQLRunner
 
 
-class ClickHouse(SQLRunner):
+class ClickHouseRunner(SQLRunner):
     def __init__(
             self,
             connection_config: ConnectionConfig,
