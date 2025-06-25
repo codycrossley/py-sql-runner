@@ -2,7 +2,7 @@ import traceback
 
 import pandas as pd
 import redshift_connector
-from typing import Any, List
+from typing import List
 
 from sql_runner.core import ConnectionConfig, SQLRunner
 
@@ -27,11 +27,11 @@ class RedshiftRunner(SQLRunner):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.conn:
+        if hasattr(self, "conn") and self.conn:
             self.conn.close()
 
     def __del__(self):
-        if self.conn:
+        if hasattr(self, "conn") and self.conn:
             self.conn.close()
 
     def execute_query(self, query: str):
