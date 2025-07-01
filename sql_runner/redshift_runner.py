@@ -84,6 +84,9 @@ class RedshiftRunner(SQLRunner):
 
             column_names = [col_desc[0] for col_desc in cursor.description]
 
+            if not rows:
+                return pd.DataFrame(data=[], columns=pd.Index(column_names))
+
             if use_arrow:
                 try:
                     import pyarrow as pa

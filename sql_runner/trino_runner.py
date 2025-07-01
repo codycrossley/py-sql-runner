@@ -88,6 +88,9 @@ class TrinoRunner(SQLRunner):
 
             column_names: list[str] = [desc[0] for desc in cursor.description]
 
+            if not rows:
+                return pd.DataFrame(data=[], columns=pd.Index(column_names))
+
             if use_arrow:
                 try:
                     import pyarrow as pa
