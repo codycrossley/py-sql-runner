@@ -1,3 +1,5 @@
+from typing import Any
+
 import boto3
 from botocore.exceptions import ClientError
 from dataclasses import dataclass
@@ -125,7 +127,7 @@ def create_postgres_runner_from_aws_secret(
 def create_trino_runner_from_env(
         env_path: Path | str,
         env_mapping: EnvMapping | dict = None,
-        client_tags: list[str] = None,
+        **kwargs: Any,
 ):
     connection_config = create_connection_config_from_env(
         env_path=env_path,
@@ -134,7 +136,7 @@ def create_trino_runner_from_env(
 
     return TrinoRunner(
         connection_config=connection_config,
-        client_tags=client_tags,
+        **kwargs,
     )
 
 
@@ -142,11 +144,8 @@ def create_trino_runner_from_aws_secret(
         secret_name: str,
         region: str = "us-east-1",
         session: boto3.session.Session | None = None,
-        client_tags: list[str] = None,
+        **kwargs
 ):
-    if client_tags is None:
-        client_tags = []
-
     connection_config = create_connection_config_from_secret(
         secret_name=secret_name,
         region=region,
@@ -155,5 +154,5 @@ def create_trino_runner_from_aws_secret(
 
     return TrinoRunner(
         connection_config=connection_config,
-        client_tags=client_tags,
+        **kwargs
     )
