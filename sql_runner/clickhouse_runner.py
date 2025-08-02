@@ -1,4 +1,5 @@
 import clickhouse_connect
+from typing import Any
 
 from sql_runner.core import ConnectionConfig, SQLRunner
 
@@ -7,7 +8,7 @@ class ClickHouseRunner(SQLRunner):
     def __init__(
             self,
             connection_config: ConnectionConfig,
-            secure: bool = True
+            **kwargs: Any
     ):
         super().__init__(connection_config=connection_config)
 
@@ -17,7 +18,8 @@ class ClickHouseRunner(SQLRunner):
             user=connection_config.user,
             password=connection_config.password,
             database=connection_config.database,
-            secure=secure
+            secure=kwargs.get("secure", True),
+            **kwargs
         )
 
     def __enter__(self):

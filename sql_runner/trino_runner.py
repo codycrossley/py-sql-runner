@@ -11,8 +11,7 @@ class TrinoRunner(SQLRunner):
     def __init__(
             self,
             connection_config: ConnectionConfig,
-            isolation_level: IsolationLevel = IsolationLevel.AUTOCOMMIT,
-            client_tags: list[str] = None,
+            **kwargs
     ):
         super().__init__(connection_config=connection_config)
 
@@ -20,7 +19,7 @@ class TrinoRunner(SQLRunner):
         auth = (
             trino.auth.BasicAuthentication(self.connection_config.user, self.connection_config.password)
             if self.connection_config.password
-            else None
+            else trino.constants.DEFAULT_AUTH
         )
 
         self.conn = trino.dbapi.connect(
@@ -31,8 +30,7 @@ class TrinoRunner(SQLRunner):
             schema=self.connection_config.schema,
             http_scheme=http_scheme,
             auth=auth,
-            isolation_level=isolation_level,
-            client_tags=client_tags,
+            **kwargs,
         )
 
     def __enter__(self):
