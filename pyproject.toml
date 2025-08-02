@@ -1,6 +1,6 @@
 [project]
 name = "py-sql-runner"
-version = "0.0.5"
+version = "0.0.6"
 description = "Simple abstraction layer over Trino, ClickHouse, PostgreSQL, and more"
 authors = [{ name="Cody Crossley", email="cody@codycrossley.com" }]
 readme = "README.md"
